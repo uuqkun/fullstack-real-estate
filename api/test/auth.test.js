@@ -3,6 +3,11 @@ import supertest from "supertest";
 import { createUser, deleteUsers } from "./test-util.js";
 
 describe("Authentication", () => {
+  
+  beforeEach(() => {
+    deleteUsers();
+  });
+  
   afterEach(() => {
     deleteUsers();
   });
@@ -29,6 +34,6 @@ describe("Authentication", () => {
     });
     
     expect(result.status).toBe(409);
-    expect(result.body.errors).toBe("Cannot use respective username or email, user already exist!");
+    expect(result.body.errors).toBe("Cannot use respective username or email, user already exist");
   });
 });
